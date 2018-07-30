@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.workjob.dao.UserInfoDao">
+      
+
+
+
+
+	
+	<select id="findByUsername"  resultType="com.example.workjob.entity.UserInfo"> 
+		SELECT 
+			a.*
+		FROM user_info a
+		WHERE a.username = #{0}
+	    
+	</select>
+	
+	<select id="ifExistUser"  resultType="Integer"> 
+		SELECT 
+			count(1) count
+		FROM user_info a
+		WHERE a.username = #{0}
+	    
+	</select>
+	
+	<insert id="insertUserInfo" parameterType="com.example.workjob.entity.UserInfo" >
+		INSERT INTO user_info  (uid,username,usertype,`password`,salt,state,headPortraitPath) 
+		                VALUES (#{uid},#{username},#{usertype},#{password},#{salt},#{state},#{headPortraitPath}); 
+	</insert>
+	
+	
+	
+    <update id ="updatePassword" parameterType="com.example.workjob.entity.UserInfo">
+           UPDATE user_info a
+				SET `password`= #{password}
+				WHERE a.username = #{username}
+				AND a.`password`= #{oldPassword}
+    </update>
+    
+    <update id ="updateUserInfo" parameterType="com.example.workjob.entity.UserInfo">
+           UPDATE user_info a
+				SET `headPortraitPath`= #{headPortraitPath}
+				WHERE a.username = #{username}
+    </update>
+	
+</mapper>
