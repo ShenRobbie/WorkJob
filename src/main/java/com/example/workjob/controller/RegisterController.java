@@ -70,6 +70,7 @@ public class RegisterController {
 		userInfo.setUsertype("普通注册用户");
 		userInfo.setSalt(uid + "--" + userInfo.getUsername());
 		String saltPassword = GeneralMethod.addSaltMD5(userInfo);
+		System.out.println("saltPassword-------------------" + saltPassword);
 		userInfo.setPassword(saltPassword);
 		if (null == fileName || "".equals(fileName)) {
 			userInfo.setHeadPortraitPath(workJob + "/imgupload/user_defalut.png");

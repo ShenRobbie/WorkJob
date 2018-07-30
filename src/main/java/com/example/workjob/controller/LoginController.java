@@ -67,33 +67,25 @@ public class LoginController {
 		try {
 			currentUser.login(token);
 		} catch (IncorrectCredentialsException ice) {
-			System.out.println("11111111111");
 			redirectAttributes.addFlashAttribute("error", "用户名或密码不正确！");
 		} catch (UnknownAccountException uae) {
-			System.out.println("22222222222");
 			redirectAttributes.addFlashAttribute("error", "未知账户！");
 		} catch (LockedAccountException lae) {
-			System.out.println("33333333333");
 			redirectAttributes.addFlashAttribute("error", "账户已锁定！");
 		} catch (ExcessiveAttemptsException eae) {
-			System.out.println("44444444444");
 			redirectAttributes.addFlashAttribute("error", "用户名或密码错误次数太多！");
 		} catch (AuthenticationException ae) {
 
-			System.out.println("55555555555");
 			ae.printStackTrace();
 			redirectAttributes.addFlashAttribute("error", "用户名或密码不正确！");
 		}
-		System.out.println("6666666666");
 		if (currentUser.isAuthenticated()) {
 			UserInfo userInfoMiddle = (@Valid UserInfo) currentUser.getPrincipal();
 			request.setAttribute("userInfoMiddle", userInfoMiddle);
 
 
-			System.out.println("7777777777");
 			return "layuimain";
 		} else {
-			System.out.println("88888888888");
 			token.clear();
 
 			return "login";
