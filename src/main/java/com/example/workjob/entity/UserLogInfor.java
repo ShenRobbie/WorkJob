@@ -6,7 +6,6 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import net.bytebuddy.asm.Advice.This;
 
 public class UserLogInfor implements Serializable{
 

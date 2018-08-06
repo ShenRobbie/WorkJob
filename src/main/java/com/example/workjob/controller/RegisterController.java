@@ -1,7 +1,6 @@
 package com.example.workjob.controller;
 
 
-import static org.assertj.core.api.Assertions.from;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -23,7 +22,6 @@ import com.example.workjob.service.UserInfoService;
 import com.example.workjob.until.CustomUntil;
 import com.example.workjob.until.GeneralMethod;
 
-import net.sf.json.JSONObject;
 
 @RestController
 public class RegisterController {
@@ -46,7 +44,6 @@ public class RegisterController {
 	public Message registerUser(UserInfo userInfo, RedirectAttributes redirectAttributes,
 			@RequestParam("file") MultipartFile file, HttpServletRequest request) {
 
-		JSONObject json = null;
 		logger.info("username--"+userInfo.getUsername());
 		logger.info("password--"+userInfo.getPassword());
 		if(userInfoService.ifExistUser(userInfo.getUsername())){
